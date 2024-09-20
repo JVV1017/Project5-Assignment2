@@ -11,7 +11,7 @@ struct STUDENT_DATA {
 	string lastName;
 };
 
-// Function to go through each line and read from the input file containing the first and last names
+// Function to parse the data and return the STUDENT_DATA object
 STUDENT_DATA parseStudentData(const string& line) {
 	STUDENT_DATA student;
 	stringstream ss(line);
@@ -51,6 +51,17 @@ int main() {
 
 	// Closes the file after reading it
 	inFile.close();
+
+#ifdef _DEBUG
+
+	// TO output the students data for debugging
+	cout << "Debug mode: printing student information:" << endl;
+
+	// Output the student for verification
+	for (const auto& student : students) {
+		cout << "First Name: " << student.firstName << ", Last Name: " << student.lastName << endl;
+	}
+#endif
 
 	return 0;
 }
